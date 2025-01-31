@@ -8,21 +8,21 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div class="container"></div>
-        <h1>Login</h1>
-        <h2>Welcome</h2>
-    </header>
     <div class="container">
+        <header>
+            <h1>Login</h1>
+            <h2>Welcome</h2>
+        </header>
         <div class="form-group">
-            <laber for="username">Username</laber>
+            <label for="username">Username</label> <!-- Corregido 'laber' a 'label' -->
             <input type="text" id="username" placeholder="Enter username">
         </div>
         <div class="form-group">
-            <laber for="pin">PIN</laber>
-            <input type="text" id="pin" placeholder="Enter PIN">
+            <label for="pin">PIN</label> <!-- Corregido 'laber' a 'label' -->
+            <input type="password" id="pin" placeholder="Enter PIN"> <!-- Cambiado a type="password" -->
         </div>
         <button onclick="login()">Login</button>
     </div>
+    <script src="./js/script.js"></script>
 </body>
-<script src="./js/script.js"></script>
 </html>
