@@ -1,9 +1,9 @@
-/* Estilos generales */
+<!--Estilos generales-->
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #1877f2, #1840f9); /* Fondo degradado */
+    background: linear-gradient(135deg, #1877f2, #1840f9); <!--Fondo degradado-->
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 
-/* Contenedor principal */
+<!--Contenedor principal-->
 .container {
     background: white;
     padding: 2rem;
@@ -22,7 +22,7 @@ body {
     text-align: center;
 }
 
-/* Header */
+<!--Header-->
 header h1 {
     margin: 0;
     font-size: 2rem;
@@ -35,7 +35,7 @@ header h2 {
     color: #666;
 }
 
-/* Grupos de formulario */
+<!--Grupos de formulario-->
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -54,7 +54,7 @@ input {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    box-sizing: border-box; <!--Asegura que el padding no afecte el ancho-->
     transition: border-color 0.3s ease;
 }
 
@@ -63,7 +63,7 @@ input:focus {
     outline: none;
 }
 
-/* Botón de login */
+<!--Botón de login-->
 button {
     width: 100%;
     padding: 0.75rem;
