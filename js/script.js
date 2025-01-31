@@ -1,34 +1,20 @@
-const validUsers = [
-    {username: "admin", password: "12345"},
-    {username: "user", password: "password"}
-];
+const apiBaseUrl = 'https://terasoluciones.com.mx/todolist/API/index.php';
 
-const passwordField = document.getElementById("password");
-const togglePassword = document.getElementById("togglePassword");
-const errorMessage = document.getElementById("errorMessage");
-function login(){
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    async function login() {
+        const username = document.getElementById('username').value;
+        const pin = document.getElementById('pin').value;
 
-    const user = validUsers.find(user => user.username === username && user.password === password);
-
-    if (user) {
-        errorMessage.textContent = "";
-        alert('Bienvenido, ${username}!');
-        window.location.href = "dashboard.html";
-    } else {
-        errorMessage.textContent = "Usuario o contraseña incorrectos.";
+        try {
+            const response = await axios.post(`${apiBaseUrl}/login`,{username,pin});
+            console.log(JSON.stringify(response.data));
+            if (response.data.user_id) {
+                localStorage.setItem('user_id', response.data.user_id);
+                localStorage.setItem('pin',pin);
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Login failed: User ID not found');
+            }
+        } catch (error) {
+            alert('Login failed: ' + (error.response?.data?.error || error.messager));
+        }
     }
-}
-
-togglePassword.addEventListener("mouseleave", () => {
-    passwordField.type = "password";
-    togglePassword.classList.toggle("fa-eye");
-    togglePassword.classList.toggle("fa-eye-slash")
-});
-
-togglePassword.addEventListener("mouseenter", () => {
-    passwordField.type = "text";
-    togglePassword.classList.toggle("fa-eye-slash");
-    togglePassword.classList.toggle("fa-eye")
-});

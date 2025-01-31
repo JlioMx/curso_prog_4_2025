@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dashboard</title>
+    <link rel="stylesheet" href="./css/stylesdash.css">
+    <link rel="icon" href="data:,">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Task Dashboard</h1>
+    </header>
+    <main>
+        <!-- Tabla de tareas -->
+        <article>
+            <h3>Pending Tasks</h3>
+            <table class="task-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="task-list">
+                    <!-- Tasks will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </article>
+
+        <!-- Botón para mostrar el formulario de agregar tarea -->
+        <button onclick="toggleAddTaskForm()">Add New Task</button>
+
+        <!-- Formulario para agregar tarea (inicialmente oculto) -->
+        <section id="add-task-form" style="display: none;">
+            <h3>Add New Task</h3>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" placeholder="Task description">
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date">
+            </div>
+            <div class="form-group">
+                <label for="end_date">End Date</label>
+                <input type="date" id="end_date">
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" id="photo" accept="image/*" capture="environment">
+            </div>
+            <button onclick="addTask()">Add Task</button>
+            <!-- Botón para cerrar el formulario -->
+            <button onclick="toggleAddTaskForm()">Cancel</button>
+        </section>
+    </main>
+
+    <script src="./js/scriptdash.js"></script>
+
+    <script>
+        // Función para alternar la visibilidad del formulario de agregar tarea
+        function toggleAddTaskForm() {
+            const form = document.getElementById('add-task-form');
+            const button = document.querySelector('button');
+
+            if (form.style.display === 'none') {
+                form.style.display = 'block'; // Mostrar formulario
+                button.textContent = 'Close Add Task Form'; // Cambiar texto del botón
+            } else {
+                form.style.display = 'none'; // Ocultar formulario
+                button.textContent = 'Add New Task'; // Restaurar texto original del botón
+            }
+        }
+
+        // Llama a la función loadTasks para cargar las tareas iniciales
+        loadTasks();
+    </script>
+</body>
+</html>
